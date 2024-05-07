@@ -12,10 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -43,8 +40,6 @@ public class PracticeAllTask  extends BaseClass {
 
         tasksPage = new TasksPage(driver);
         cf = new CommonFunctions(driver);
-
-
     }
 
     @BeforeMethod
@@ -58,10 +53,7 @@ public class PracticeAllTask  extends BaseClass {
     @Test
     public void getAllTasks() throws InterruptedException {
 
-
         cf.click(tasksPage.taskModule);
-
-
         List<WebElement> allTask = driver.findElements(By.xpath("//tr[contains(@class,'taskRow')]/td[2]//div[@class='title']"));
 
         for (WebElement we : allTask) {
@@ -76,7 +68,9 @@ public class PracticeAllTask  extends BaseClass {
             }
         }
 
-
+    }
+    @AfterMethod
+    public  void tearDown(){
         driver.quit();
     }
 }
