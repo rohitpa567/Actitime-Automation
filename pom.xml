@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.orangeHrm</groupId>
-    <artifactId>com.actitime</artifactId>
+    <artifactId>Actitime-Automation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
