@@ -67,7 +67,6 @@ public class PracticeAllTask  extends BaseClass {
                 System.out.println(text);
             }
         }
-
     }
     @AfterMethod
     public  void tearDown(){
