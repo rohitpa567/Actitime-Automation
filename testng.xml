@@ -9,6 +9,7 @@
 
         <classes>
             <class name="com.cs.tests.PracticeAllTask"/>
+            <class name="com.cs.tests.CalenderDemo"></class>
         </classes>
     </test> <!-- Test -->
 
