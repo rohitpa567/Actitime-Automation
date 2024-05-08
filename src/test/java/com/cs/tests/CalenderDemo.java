@@ -2,6 +2,7 @@ package com.cs.tests;
 
 
 import com.cs.Pages.LoginPage;
+import com.cs.Pages.TasksPage;
 import com.cs.common.PropertyHandling;
 import com.cs.utils.BaseClass;
 import com.cs.utils.CommonFunctions;
@@ -12,20 +13,25 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.time.Duration;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class CalenderDemo extends BaseClass {
     WebDriver driver;
     CommonFunctions cf;
+
+
 LoginPage loginPage;
+    TasksPage tasksPage;
     @BeforeClass
     public void tearUp() throws IOException {
 
         PropertyHandling propertyHandling = new PropertyHandling("config.properties");
         String browser = propertyHandling.getProperty("browser");
         driver = launchBrowser(browser);
+
+         cf= new CommonFunctions(driver);
 
         loginPage = new LoginPage(driver);
         String url = propertyHandling.getProperty("url");
@@ -35,6 +41,8 @@ LoginPage loginPage;
         String password = propertyHandling.getProperty("password");
 
         loginPage.login(username, password);
+
+        tasksPage= new TasksPage(driver);
 
     }
     @Test
@@ -49,17 +57,16 @@ LoginPage loginPage;
         String actualCurrentMonth = currentMonth.charAt(0) + currentMonth.substring(1, currentMonth.length()).toLowerCase();
 
         System.out.println("Current month is=" + actualCurrentMonth);
-        driver.findElement(By.id("container_tasks")).click();
+
+        cf.click(tasksPage.taskModule);
 
         driver.findElement(By.xpath("(//div[text()='Android prototyping'])[1]")).click();
 
         driver.findElement(By.xpath("//div[@class='rightContainer']")).click();
 
-        CommonFunctions cf= new CommonFunctions(driver);
-
         WebElement we=   driver.findElement(By.xpath("//div[@class='detailsRow']/descendant::div[text()='Set up deadline']"));
 
-      cf.elementToBeClickable(we);
+        cf.elementToBeClickable(we);
 
         driver.findElement(By.xpath("//div[@class='detailsRow']/descendant::div[text()='Set up deadline']")).click();
 
